@@ -1,7 +1,14 @@
+
+
 #include "libft.h"
-void ft_putstr_fd(char *s, int fd)
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
+	if (!s || fd == -1)
 		return ;
-	write(fd, s, ft_strlen(s));
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

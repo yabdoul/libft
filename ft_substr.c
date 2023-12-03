@@ -1,28 +1,27 @@
 
+
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*chaine;
+	size_t	length;
 	size_t	i;
-	char	*p;
-	if (!s)
-		return (0);
+
+	length = ft_strlen(s);
 	i = 0;
-	if (start >= ft_strlen(s))
+	if (s == NULL || start >= length)
 		return (ft_strdup(""));
-	else if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	p = (char *)malloc((len + 1) * sizeof(char));
-	if (!p)
-		return (0);
-	while (i < len && s[i] && start <= ft_strlen(s))
+	if (len > (length - start))
+		len = length - start;
+	chaine = (char *)malloc((len) + 1);
+	if (!chaine)
+		return (NULL);
+	while ((i + start) < length && i < len)
 	{
-		p[i] = s[start];
-		if (!p[i])
-			return (0);
-		start++;
+		chaine[i] = s[i + start];
 		i++;
 	}
-	p[i] = '\0';
-	return (p);
+	chaine[i] = 0;
+	return (chaine);
 }

@@ -1,18 +1,23 @@
-#include <stdlib.h> 
-#include <string.h>
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+
+#include "libft.h"
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    int i;
-    i = 0; 
-    char *reslt = malloc((strlen(s)+1) *sizeof(char)); 
-    if(reslt == NULL || s == NULL )
-    return 0; 
-    while(i< strlen(s))
-    {
-        reslt[i] = f(i,s[i]) ; 
-        printf("this %c \n",s[i]);
-        i++; 
-    } 
-    reslt[i] = '\0' ; 
-    return  reslt ;
+	size_t	i;
+	size_t	len;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	len = ft_strlen(s);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (i < len)
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[len] = 0;
+	return (str);
 }

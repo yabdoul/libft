@@ -1,18 +1,23 @@
-char*ft_strrchr(const char *s, int c)
+
+
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
-	i = 0;
-	while (s[i] != '\0')
-		{
-            i++; 
-        }
-	while (i >= 0)
+	size_t	index;
+	char	*res;
+
+	res = NULL;
+	index = 0;
+	while (s[index])
 	{
-		if (s[i] == (char)c)
-			{
-                return ((char*)(s + i));
-            }
-		i--;
+		if (s[index] == (unsigned char)c)
+			res = (char *)(s + index);
+		index++;
 	}
-	return (NULL);
+	if (s[index] == (unsigned char)c)
+	{
+		res = (char *)(s + index);
+	}
+	return (res);
 }
